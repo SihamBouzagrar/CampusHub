@@ -1,0 +1,21 @@
+@model CampusHub.API.DTOs.AnnouncementReadDto
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Title</h2>
+            <hr />
+            <p class="card-text" style="white-space: pre-line;">@Model.Content</p>
+            <hr />
+            <div class="d-flex justify-content-between text-muted">
+                <span>By <strong>@Model.AuthorName</strong></span>
+                <span>@Model.CreatedAt.ToString("dd MMM yyyy HH:mm")</span>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back</a>
+</div>

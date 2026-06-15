@@ -1,0 +1,64 @@
+@model IEnumerable<CampusHub.API.DTOs.AnnouncementReadDto>
+@{
+    ViewData["Title"] = "Announcements";
+    var isAdmin = User.IsInRole("Admin");
+    var isTeacher = User.IsInRole("Teacher");
+}
+
+<h2 class="mb-4">Announcements</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (isAdmin || isTeacher)
+{
+    <a asp-action="Create" class="btn btn-primary mb-3">+ Publish Announcement</a>
+}
+
+<!-- SEARCH -->
+<form method="get" asp-action="Index" class="row g-2 mb-4">
+    <div class="col-md-6">
+        <input type="text" name="search" value="@ViewBag.Search"
+               class="form-control" placeholder="Search announcements..." />
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-secondary w-100">Search</button>
+    </div>
+    <div class="col-md-2">
+        <a asp-action="Index" class="btn btn-outline-secondary w-100">Reset</a>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No announcements found.</p>
+}
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">@item.Title</h4>
+            <p class="card-text">@item.Content</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">
+                    By <strong>@item.AuthorName</strong> |
+                    @item.CreatedAt.ToString("dd MMM yyyy HH:mm")
+                </small>
+                <div>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Read</a>
+                    @if (isAdmin)
+                    {
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline"
+                              onsubmit="return confirm('Delete this announcement?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

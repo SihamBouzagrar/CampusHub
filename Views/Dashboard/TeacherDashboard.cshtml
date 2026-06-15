@@ -1,0 +1,116 @@
+@model CampusHub.ViewModels.TeacherDashboardViewModel
+<h2>Teacher Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card bg-primary text-white p-3">
+            <h4>Events</h4>
+            <h2>@Model.TotalEvents</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-success text-white p-3">
+            <h4>My Reservations</h4>
+            <h2>@Model.TotalReservations</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-warning text-dark p-3">
+            <h4>Documents</h4>
+            <h2>@Model.TotalDocuments</h2>
+        </div>
+    </div>
+
+</div>
+<hr />
+
+<h3>Upcoming Events</h3>
+
+<ul>
+@foreach(var e in Model.UpcomingEvents)
+{
+    <li>
+        @e.Title -
+        @e.Date.ToString("dd/MM/yyyy")
+    </li>
+}
+</ul>
+<hr />
+
+<h3>My Reservations</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Room</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach(var r in Model.MyReservations)
+{
+        <tr>
+            <td>@r.RoomName</td>
+            <td>@r.ReservationDate.ToString("dd/MM/yyyy")</td>
+            <td>@r.Status</td>
+        </tr>
+}
+    </tbody>
+
+</table>
+<hr />
+
+<h3>Recent Documents</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach(var d in Model.RecentDocuments)
+{
+        <tr>
+            <td>@d.Title</td>
+            <td>@d.UploadedAt.ToString("dd/MM/yyyy")</td>
+        </tr>
+}
+    </tbody>
+
+</table>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="eventChart"></canvas>
+
+<script>
+new Chart(document.getElementById('eventChart'), {
+    type: 'bar',
+    data: {
+        labels: [
+            @foreach(var s in Model.EventStats)
+            {
+                @: "@s.EventTitle",
+            }
+        ],
+        datasets: [{
+            label: 'Participants',
+            data: [
+                @foreach(var s in Model.EventStats)
+                {
+                    @: @s.ParticipantsCount,
+                }
+            ]
+        }]
+    }
+});
+</script>

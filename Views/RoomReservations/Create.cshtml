@@ -1,0 +1,142 @@
+@model CampusHub.Models.RoomReservation
+
+@{
+    ViewData["Title"] = "Create Reservation";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6 col-md-8">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+
+                    <h2 class="fw-bold mb-1">
+                        Room Reservation
+                    </h2>
+
+                    <p class="mb-0">
+                        EHTP Campus Booking System
+                    </p>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger">
+                        </div>
+
+                        <!-- ROOM NAME -->
+                        <div class="mb-3">
+
+                            <label asp-for="RoomName"
+                                   class="form-label fw-semibold">
+                                Room Name
+                            </label>
+
+                            <input asp-for="RoomName"
+                                   class="form-control form-control-lg"
+                                   placeholder="Ex: Salle A12" />
+
+                            <span asp-validation-for="RoomName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- DATE -->
+                        <div class="mb-3">
+
+                            <label asp-for="ReservationDate"
+                                   class="form-label fw-semibold">
+                                Reservation Date
+                            </label>
+
+                            <input asp-for="ReservationDate"
+                                   type="date"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="ReservationDate"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- START TIME -->
+                        <div class="mb-3">
+
+                            <label asp-for="StartTime"
+                                   class="form-label fw-semibold">
+                                Start Time
+                            </label>
+
+                            <input asp-for="StartTime"
+                                   type="time"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="StartTime"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- END TIME -->
+                        <div class="mb-4">
+
+                            <label asp-for="EndTime"
+                                   class="form-label fw-semibold">
+                                End Time
+                            </label>
+
+                            <input asp-for="EndTime"
+                                   type="time"
+                                   class="form-control form-control-lg" />
+
+                            <span asp-validation-for="EndTime"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- BUTTONS -->
+                        <div class="d-grid gap-2">
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg">
+
+                                Reserve Room
+
+                            </button>
+
+                            <a href="/reservations/create"
+                               class="btn btn-outline-secondary">
+
+                                Back to List
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

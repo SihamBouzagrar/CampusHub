@@ -1,8 +1,103 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- HERO CAROUSEL -->
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- INDICATORS -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+        <!-- SLIDE 1 -->
+        <div class="carousel-item active hero-slide">
+            <img src="/images/interface.jpg" class="d-block w-100 hero-img">
+
+            <div class="carousel-caption text-start">
+                <h1 class="fw-bold">Welcome to CampusHub</h1>
+                <p>Manage clubs, events and campus life in one platform</p>
+                <a href="/clubs" class="btn btn-light btn-sm mt-2">Explore Clubs</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="carousel-item hero-slide">
+            <img src="/images/interface2.jpg" class="d-block w-100 hero-img">
+
+            <div class="carousel-caption">
+                <h1 class="fw-bold">Join Student Clubs</h1>
+                <p>Connect with communities that match your passion</p>
+                <a href="/clubs" class="btn btn-outline-light btn-sm mt-2">See Clubs</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="carousel-item hero-slide">
+            <img src="/images/interface3.jpg" class="d-block w-100 hero-img">
+
+            <div class="carousel-caption text-end">
+                <h1 class="fw-bold">Discover Events</h1>
+                <p>Never miss activities happening on campus</p>
+                <a href="/events" class="btn btn-light btn-sm mt-2">View Events</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
 </div>
+<div class="text-center mt-4 mb-5">
+    <a href="/Account/Login" class="btn btn-primary btn-lg px-4">
+        Get Started
+    </a>
+</div>
+<div class="container pb-5">
+    <div class="row g-4 text-center">
+
+        <div class="col-md-3">
+            <div class="p-4 shadow-sm rounded bg-primary text-white h-100">
+                <i class="fa-solid fa-users fa-2x mb-3"></i>
+                <h5>Clubs</h5>
+                <p>Join student communities</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="p-4 shadow-sm rounded bg-warning text-dark h-100">
+                <i class="fa-solid fa-calendar-days fa-2x mb-3"></i>
+                <h5>Events</h5>
+                <p>Participate in campus activities</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="p-4 shadow-sm rounded bg-secondary text-orange h-100">
+                <i class="fa-solid fa-building fa-2x mb-3"></i>
+                <h5>Rooms</h5>
+                <p>Book university spaces easily</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="p-4 shadow-sm rounded bg-dark text-white h-100">
+                <i class="fa fa-bullhorn"></i>
+                    <h5>News</h5>
+                    <p>Stay updated with announcements</p>
+                </div>
+            </div>
+
+        </div>
+    </div>

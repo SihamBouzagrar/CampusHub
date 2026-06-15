@@ -1,0 +1,52 @@
+@model CampusHub.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2 class="mb-4">My Profile</h2>
+
+<div class="row">
+
+    <!-- LEFT: PROFILE IMAGE -->
+    <div class="col-md-4 text-center">
+
+        <img src="@(Model.ProfileImageUrl ?? "/images/default-user.jpg")" class="rounded-circle mb-3" width="150"
+             height="150" style="object-fit:cover;" />
+
+        <form asp-action="UploadProfile" asp-controller="Account" method="post" enctype="multipart/form-data">
+
+            <input type="file" name="file" class="form-control " />
+
+            <button type="submit" class="btn btn-primary mt-2">
+                Upload
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- RIGHT: PROFILE INFO -->
+    <div class="col-md-8">
+
+        <form asp-action="Profile" method="post">
+
+            <div class="mb-3">
+                <label>Full Name</label>
+                <input asp-for="FullName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" disabled />
+            </div>
+
+            <button class="btn btn-success">
+                Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

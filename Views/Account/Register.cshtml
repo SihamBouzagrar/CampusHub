@@ -1,0 +1,28 @@
+@using CampusHub.Web.DTOs
+@model RegisterDto
+
+<form asp-action="Register" method="post">
+
+    <input asp-for="FullName" class="form-control" placeholder="Full Name" />
+    <span asp-validation-for="FullName" class="text-danger"></span>
+
+    <input asp-for="Email" class="form-control mt-2" placeholder="Email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+
+    <input asp-for="Password" class="form-control mt-2" placeholder="Password" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+
+    <input asp-for="ConfirmPassword" class="form-control mt-2" placeholder="Confirm Password" />
+    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+    <!-- ROLE -->
+    <select asp-for="Role" class="form-control mt-2">
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+    </select>
+
+    <button class="btn btn-primary mt-3 w-100">
+        Register
+    </button>
+
+</form>

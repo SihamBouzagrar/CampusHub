@@ -1,0 +1,14 @@
+@using CampusHub.Web.DTOs
+@model LoginDto
+
+<form asp-action="Login" method="post">
+
+    <input asp-for="Email" class="form-control" placeholder="Email" />
+
+    <input asp-for="Password" class="form-control mt-2" placeholder="Password" />
+
+    <button class="btn btn-success mt-3">
+        Login
+    </button>
+
+</form>

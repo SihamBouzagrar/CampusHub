@@ -1,0 +1,129 @@
+@using CampusHub.Web.DTOs
+@model RegisterDto
+
+@{
+    ViewData["Title"] = "CampusHub - Authentication";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0d47a1, #1976d2, #42a5f5);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .auth-card {
+        width: 420px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .title {
+        text-align: center;
+        font-weight: bold;
+        color: #0d47a1;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        background: #0d47a1;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .btn-primary:hover {
+        background: #1565c0;
+    }
+
+    .switch {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .switch a {
+        color: #0d47a1;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
+
+<div class="auth-card">
+    <span class="badge bg-primary">EHTP Campus</span>
+
+    <!-- LOGO EHTP -->
+    <div class="logo">
+        <img src="/images/Logo.jpg" />
+    </div>
+
+    <h4 class="title">CampusHub Portal</h4>
+
+    <!-- LOGIN FORM -->
+    <form asp-action="Login" method="post" id="loginForm">
+
+        <input name="Email" class="form-control mt-3" placeholder="Email" />
+        <input name="Password" type="password" class="form-control mt-2" placeholder="Password" />
+
+        <button class="btn btn-primary w-100 mt-3">
+            Login
+        </button>
+
+    </form>
+
+    <hr />
+
+    <!-- REGISTER FORM -->
+    <form asp-action="Register" method="post" id="registerForm">
+
+        <input asp-for="FullName" class="form-control mt-2" placeholder="Full Name" />
+        <input asp-for="Email" class="form-control mt-2" placeholder="Email" />
+        <input asp-for="Password" class="form-control mt-2" placeholder="Password" />
+        <input asp-for="ConfirmPassword" class="form-control mt-2" placeholder="Confirm Password" />
+
+        <button class="btn btn-primary w-100 mt-3">
+            Create Account
+        </button>
+
+    </form>
+
+    <div class="switch">
+        <a href="#" onclick="toggleForms()">Switch Login / Register</a>
+    </div>
+
+</div>
+
+<script>
+    function toggleForms() {
+        var login = document.getElementById("loginForm");
+        var register = document.getElementById("registerForm");
+
+        if (login.style.display === "none") {
+            login.style.display = "block";
+            register.style.display = "none";
+        } else {
+            login.style.display = "none";
+            register.style.display = "block";
+        }
+    }
+
+    // default view
+    document.getElementById("registerForm").style.display = "none";
+</script>
+<p class="text-center text-muted mt-3">
+    © CampusHub - EHTP University
+</p>

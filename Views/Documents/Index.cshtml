@@ -1,0 +1,52 @@
+@model IEnumerable<CampusHub.Models.Document>
+
+<h2>📁 Documents Sharing</h2>
+
+<a asp-action="Upload" class="btn btn-success mb-3">
+    Upload Document
+</a>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Uploaded By Role</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var doc in Model)
+{
+        <tr>
+            <td>@doc.Title</td>
+            <td>@doc.UserRole</td>
+            <td>@doc.UploadedAt</td>
+
+            <td>
+    <a asp-action="Download"
+       asp-route-id="@doc.Id"
+       class="btn btn-primary btn-sm">
+        Download
+    </a>
+
+    <form asp-action="Delete"
+          asp-route-id="@doc.Id"
+          method="post"
+          class="d-inline"
+          onsubmit="return confirm('Are you sure you want to delete this document?');">
+
+        <button type="submit"
+                class="btn btn-danger btn-sm">
+            Delete
+        </button>
+
+    </form>
+</td>
+        </tr>
+}
+    </tbody>
+
+</table>

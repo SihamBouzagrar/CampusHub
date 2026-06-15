@@ -1,0 +1,46 @@
+@model CampusHub.API.DTOs.ClubDto
+
+@{
+    ViewData["Title"] = "Edit Club";
+}
+
+<div class="container mt-5" style="max-width:600px;">
+
+    <div class="card shadow-sm p-4">
+
+        <h3 class="fw-bold text-center mb-3">Edit Club</h3>
+<form asp-action="Edit"
+      method="post"
+      enctype="multipart/form-data">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <input asp-for="Category" class="form-control" />
+            </div>
+<input type="file" name="LogoFile" class="form-control" />
+            <button type="submit" class="btn btn-primary w-100">
+                Save Changes
+            </button>
+
+        </form>
+       <a asp-controller="Club"
+   asp-action="Index"
+   class="btn btn-secondary mt-3">
+    Back
+</a>
+
+    </div>
+
+</div>

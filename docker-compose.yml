@@ -1,0 +1,30 @@
+services:
+
+  campushub-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: campushub-db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+      SA_PASSWORD: "YourStrong@Passw0rd!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  campushub-app:
+    build: .
+    container_name: campushub-app
+    ports:
+      - "5000:8080"
+    depends_on:
+      - campushub-db
+    environment:
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__DefaultConnection: "Server=campushub-db,1433;Database=CampusHubDb;User Id=sa;Password=YourStrong@Passw0rd!;TrustServerCertificate=True"
+    volumes:
+     - keys:/app/keys
+
+volumes:
+  sqlserver_data:
+  keys:

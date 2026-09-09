@@ -1,0 +1,184 @@
+# =========================================================
+
+# CampusHub - ASP.NET Core / .NET
+
+# =========================================================
+
+# Build outputs
+
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+
+.vs/
+.vscode/
+
+# User-specific files
+
+*.user
+*.userosscache
+*.suo
+*.rsuser
+
+# Visual Studio Code
+
+.history/
+
+# Rider / JetBrains
+
+.idea/
+*.sln.iml
+
+# Test results
+
+TestResults/
+*.trx
+
+# Coverage
+
+coverage/
+*.coverage
+*.coveragexml
+
+# NuGet
+
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# ASP.NET Core generated files
+
+wwwroot/lib/
+wwwroot/node_modules/
+
+# Publish / deployment outputs
+
+publish/
+[Ww]ww[Pp]ublish/
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Generated documentation
+
+*.generated.cs
+
+# Logs
+
+*.log
+logs/
+
+# Temporary files
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS files
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================================
+
+# Docker
+
+# =========================================================
+
+# Docker local environment files
+
+docker-compose.override.yml
+docker-compose.*.override.yml
+
+# Docker volumes / local data
+
+.docker/
+docker-data/
+docker-volumes/
+
+# =========================================================
+
+# Entity Framework Core
+
+# =========================================================
+
+# EF generated migration build artifacts
+
+# NOTE: Keep the Migrations/*.cs files tracked.
+
+# Do NOT ignore the entire Migrations directory.
+
+# =========================================================
+
+# Local configuration / secrets
+
+# =========================================================
+
+# Local development secrets
+
+secrets.json
+appsettings.Local.json
+
+# User secrets
+
+secrets/
+.aspnet/
+
+# Environment files
+
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# =========================================================
+
+# Databases / local data
+
+# =========================================================
+
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# =========================================================
+
+# Node.js (if used by frontend/assets)
+
+# =========================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================================================
+
+# Azure / deployment local files
+
+# =========================================================
+
+*.publishsettings
+
+# =========================================================
+
+# Backup / archives
+
+# =========================================================
+
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
